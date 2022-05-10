@@ -1,45 +1,95 @@
 import React from 'react'
-import { Text, SafeAreaView, View, StyleSheet} from 'react-native'
-import tw from 'tailwind-react-native-classnames';
+import { Text, SafeAreaView, View, StyleSheet, TouchableOpacity} from 'react-native'
+import tw from 'twrnc';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import {GOOGLE_MAP_API_KEY} from '@env';
-import { setDestination} from '../slices/navSlice';
-import {useDispatch}from 'react-redux';
+import { setDestination,
+        selectDestination,
+        setLocationDetails} from '../slices/navSlice';
+import {useDispatch, useSelector}from 'react-redux';
 import { useNavigation } from '@react-navigation/core';
+import NavFavourites from './NavFavourites';
+import { Icon } from 'react-native-elements';
 
 const NavigateCard = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
+    const destination = useSelector(selectDestination);
+
+    const addAddress = () => {
+        dispatch(setLocationDetails(destination));
+        navigation.navigate('Favorites')
+    }
+
     return (
         <SafeAreaView 
         style={tw `bg-white flex-1`}>
             <Text style={tw `text-center py-5 text-xl`}>Good Morning Ambience</Text>
             <View
-            style={tw `border-t border-gray-200 flex-shrink`}>
-                {/* goog;e places autocomplete */}
-                <View>
+            style={tw `border-t border-gray-200`}>
+                {/* google places autocomplete */}
+                <View style={tw `flex flex-row`}>
                     <GooglePlacesAutocomplete
-                    placeholder='where to'
-                    styles = {toInputBoxStyles}
-                    // function to be activated on Press
-                    onPress={(data, details = null) => {
-                        dispatch(setDestination({
-                            location: details.geometry.location,
-                            description: data.description
-                        }));
-                        navigation.navigate('RideOptionsCard')
-                    }}
-                    fetchDetails={true}
-                    returnKeyType={"search"}
-                    enablePoweredByContainer={false}
-                    minLength={2}
-                    query={{
-                        key: GOOGLE_MAP_API_KEY,
-                        language: 'en'
-                    }}
-                    nearbyPlacesAPI="GooglePlacesSearch"
-                    debounce={400}/>
+                        placeholder='where to'
+                        styles = {toInputBoxStyles}
+                        // function to be activated on Press
+                        onPress={(data, details = null) => {
+                            dispatch(setDestination({
+                                location: details.geometry.location,
+                                description: data.description
+                            }));
+                            navigation.navigate('RideOptionsCard')
+                        }}
+                        fetchDetails={true}
+                        returnKeyType={"search"}
+                        enablePoweredByContainer={false}
+                        minLength={2}
+                        query={{
+                            key: GOOGLE_MAP_API_KEY,
+                            language: 'en'
+                        }}
+                        nearbyPlacesAPI="GooglePlacesSearch"
+                        debounce={400}/>
+
+                    <TouchableOpacity
+                        style={tw `w-20`}
+                        onPress={() => addAddress()}>
+                            <Icon
+                                style={tw `mr-4 rounded-full bg-gray-300 p-3`}
+                                name= 'plus'
+                                type= 'antdesign'
+                                color="black"
+                                size={20}/>
+                        </TouchableOpacity>
                 </View>
+                    <NavFavourites/>
+                    
+            </View>
+
+            <View 
+            style={tw `flex-row bg-white justify-evenly py-2 mt-auto border-t border-gray-100`}>
+                <TouchableOpacity
+                onPress={() => navigation.navigate('RideOptionsCard')}
+                style={tw `flex-row justify-between bg-black w-24 px-4 py-3 rounded-full`}>
+                    <Icon
+                    name="car"
+                    type="font-awesome"
+                    color="white"
+                    size={16}/>
+                    <Text
+                    style={tw `text-white text-center`}>Rides</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                style={tw `flex-row justify-between w-24 px-4 py-3 rounded-full`}>
+                    <Icon
+                    name="fast-food-outline"
+                    type="ionicon"
+                    color="black"
+                    size={16}/>
+                    <Text
+                    style={tw `text-center`}>Eats</Text>
+                </TouchableOpacity>
             </View>
         </SafeAreaView>
     )
@@ -51,7 +101,7 @@ const toInputBoxStyles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
         paddingTop: 20,
-        flex: 0
+        flex: 1
     },
     textInput: {
         backgroundColor:'#DDDDDF',
@@ -60,6 +110,6 @@ const toInputBoxStyles = StyleSheet.create({
     },
     textInputContainer: {
         paddingHorizontal: 20,
-        paddingBottom: 0
+        paddingBottom: 10
     }
 })

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "instagram_clone",
-    "slug": "instagram_clone",
+    "name": "uber_clone",
+    "slug": "uber_clone",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
