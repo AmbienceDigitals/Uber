@@ -74,10 +74,10 @@ const Home = () => {
                 style={tw `w-20`}
                 onPress={() => addAddress()}>
                     <AntDesign
-                        style={tw `mr-4 rounded-full bg-gray-300 p-3`}
+                        style={tw `mr-4 mt-1 rounded-full bg-gray-300 pl-5 py-1`}
                         name= 'plus'
                         color="black"
-                        size={20}/>
+                        size={25}/>
                 </TouchableOpacity>
             </View>
             

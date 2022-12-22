@@ -47,9 +47,10 @@ const NavOption = () => {
                     <Text
                     style={tw `mt-2 text-lg font-semibold`}>{item.title}</Text>
                     <AntDesign
-                    style={tw `p-2 bg-black rounded-full w-10 mt-4`}
+                    style={tw `pl-3 pt-2 pb-2 bg-black rounded-full w-10 mt-4`}
                     name='arrowright'
                     color='white'
+                    size={15}
                     />
                 </View>
             </TouchableOpacity>

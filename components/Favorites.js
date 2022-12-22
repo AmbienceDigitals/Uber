@@ -7,6 +7,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import {GOOGLE_MAP_API_KEY} from '@env';
 import {addFavorite, selectLocationDetails, clearLocationDetails} from '../slices/navSlice';
 import {useDispatch, useSelector}from 'react-redux';
+import { AntDesign } from '@expo/vector-icons';
 
 
 const Favorites = () => {
@@ -69,11 +70,12 @@ const Favorites = () => {
         <SafeAreaView style={tw `flex items-center bg-white h-full p-5`}>
             <TouchableOpacity
             onPress={() => navigation.goBack()}>
-            <Icon
+            <AntDesign
                     style={tw `p-2 bg-black rounded-full w-10 mt-4`}
                     name='arrowleft'
                     color='white'
-                    type='antdesign'/>
+                    type='antdesign'
+                    size={20}/>
             </TouchableOpacity>
 
             {/* Logo */}
