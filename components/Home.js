@@ -10,8 +10,8 @@ import {setOrigin,
         setLocationDetails,
         selectOrigin} from '../slices/navSlice';
 import NavFavourites from './NavFavourites';
-import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/core';
+import { AntDesign } from '@expo/vector-icons';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -73,10 +73,9 @@ const Home = () => {
                 <TouchableOpacity
                 style={tw `w-20`}
                 onPress={() => addAddress()}>
-                    <Icon
+                    <AntDesign
                         style={tw `mr-4 rounded-full bg-gray-300 p-3`}
                         name= 'plus'
-                        type= 'antdesign'
                         color="black"
                         size={20}/>
                 </TouchableOpacity>

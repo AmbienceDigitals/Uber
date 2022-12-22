@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/core';
 import React from 'react'
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
-import { Icon } from 'react-native-elements';
+import {AntDesign} from '@expo/vector-icons'
 import tw from 'twrnc';
 import {useSelector} from 'react-redux';
 import {selectOrigin} from '../slices/navSlice';
@@ -46,11 +46,11 @@ const NavOption = () => {
                     source={{uri: item.image}}></Image>
                     <Text
                     style={tw `mt-2 text-lg font-semibold`}>{item.title}</Text>
-                    <Icon
+                    <AntDesign
                     style={tw `p-2 bg-black rounded-full w-10 mt-4`}
                     name='arrowright'
                     color='white'
-                    type='antdesign'/>
+                    />
                 </View>
             </TouchableOpacity>
         )}>

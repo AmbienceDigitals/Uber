@@ -1,13 +1,13 @@
-import React, {useState, useMemo, useEffect} from 'react';
+import React, {useState} from 'react';
 import {View, Text, SafeAreaView, TouchableOpacity, Image, TextInput} from 'react-native';
 import tw from 'twrnc';
-import { Icon } from 'react-native-elements';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/core';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import {GOOGLE_MAP_API_KEY} from '@env';
 import {addFavorite, selectLocationDetails, clearLocationDetails} from '../slices/navSlice';
 import {useDispatch, useSelector}from 'react-redux';
-import {Picker} from '@react-native-picker/picker';
+
 
 const Favorites = () => {
     const navigation = useNavigation();
@@ -145,10 +145,9 @@ const Favorites = () => {
             <TouchableOpacity
                 onPress = {() => submit()}
                 style={tw `flex-row  items-center p-2 bg-gray-200 mr-5 ml-2 rounded-xl`}>
-                    <Icon
+                    <Ionicons
                     style={tw `mr-3 ml-2 rounded-full bg-gray-300 p-2`}
                     name='car'
-                    type="ionicon"
                     color="black"
                     size={20}/>
                     <View>

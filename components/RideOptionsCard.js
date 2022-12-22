@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Text, View, SafeAreaView, TouchableOpacity, FlatList, Image } from 'react-native'
 import tw from 'twrnc';
-import { Icon } from 'react-native-elements';
+import {FontAwesome} from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/core';
 import {useSelector} from 'react-redux';
 import {selectTravelTimeInformation} from '../slices/navSlice';
@@ -45,9 +45,9 @@ const RideOptionsCard = () => {
                 <TouchableOpacity
                 onPress={() => navigation.navigate('NavigateCard')}
                 style={tw `absolute top-3 left-5 p-3 rounded-full z-50`}>
-                    <Icon
+                    <FontAwesome
                     name="chevron-left"
-                    type="fontawesome"/>
+                    />
                 </TouchableOpacity>  
             </View>
             <FlatList

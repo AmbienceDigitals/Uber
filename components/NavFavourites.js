@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Icon } from 'react-native-elements';
+import {Ionicons} from '@expo/vector-icons';
 import tw from 'twrnc';
 import { useSelector, useDispatch}from 'react-redux';
 import {selectFavorite, setOrigin, setDestination} from '../slices/navSlice';
@@ -47,10 +47,9 @@ const NavFavourites = () => {
                 }
             }}
             style={tw `flex-row items-center p-2 bg-gray-200 w-80 m-auto mb-3 rounded-xl ${route.name !== 'Home' && 'ml-4'}`}>
-                <Icon
+                <Ionicons
                 style={tw `rounded-full bg-gray-300 p-3 mr-3 ml-3`}
                 name={icon}
-                type='ionicon'
                 color="black"
                 size={20}/>
                 <View
@@ -67,10 +66,9 @@ const NavFavourites = () => {
             <TouchableOpacity
                 onPress = {() => navigation.navigate('Favorites')}
                 style={[tw `flex-row items-center justify-center p-2 bg-gray-200 rounded-2xl ml-3 `, route.name === "Home" ? styles.button : ""]}>
-                    <Icon
+                    <Ionicons
                     style={tw `ml-2 rounded-full bg-gray-300 p-3`}
                     name='car'
-                    type="ionicon"
                     color="black"
                     size={20}/>
                     <View>

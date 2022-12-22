@@ -5,7 +5,7 @@ import Map from '../components/Map';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import NavigateCard from '../components/NavigateCard';
 import RideOptionsCard from '../components/RideOptionsCard';
-import { Icon } from 'react-native-elements';
+import {Entypo} from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/core';
 import {useRoute, useNavigationState, getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import Favorites from '../components/Favorites';
@@ -30,7 +30,7 @@ const MapScreen = () => {
             <TouchableOpacity
             style={tw `bg-gray-100 absolute top-16 left-8 z-50 p-3 rounded-full shadow-lg`}
             onPress={() => navigation.navigate('HomeScreen')}>
-                <Icon
+                <Entypo
                 name='menu'/>
             </TouchableOpacity>
             

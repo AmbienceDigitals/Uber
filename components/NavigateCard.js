@@ -9,7 +9,7 @@ import { setDestination,
 import {useDispatch, useSelector}from 'react-redux';
 import { useNavigation } from '@react-navigation/core';
 import NavFavourites from './NavFavourites';
-import { Icon } from 'react-native-elements';
+import {AntDesign, Ionicons, FontAwesome} from '@expo/vector-icons';
 
 const NavigateCard = () => {
     const dispatch = useDispatch();
@@ -51,13 +51,13 @@ const NavigateCard = () => {
                         nearbyPlacesAPI="GooglePlacesSearch"
                         debounce={400}/>
 
+                    {/* Add Address to NavOptions */}
                     <TouchableOpacity
                         style={tw `w-20`}
                         onPress={() => addAddress()}>
-                            <Icon
+                            <AntDesign
                                 style={tw `mr-4 rounded-full bg-gray-300 p-3`}
                                 name= 'plus'
-                                type= 'antdesign'
                                 color="black"
                                 size={20}/>
                         </TouchableOpacity>
@@ -71,9 +71,8 @@ const NavigateCard = () => {
                 <TouchableOpacity
                 onPress={() => navigation.navigate('RideOptionsCard')}
                 style={tw `flex-row justify-between bg-black w-24 px-4 py-3 rounded-full`}>
-                    <Icon
+                    <FontAwesome
                     name="car"
-                    type="font-awesome"
                     color="white"
                     size={16}/>
                     <Text
@@ -82,9 +81,8 @@ const NavigateCard = () => {
 
                 <TouchableOpacity
                 style={tw `flex-row justify-between w-24 px-4 py-3 rounded-full`}>
-                    <Icon
+                    <Ionicons
                     name="fast-food-outline"
-                    type="ionicon"
                     color="black"
                     size={16}/>
                     <Text
